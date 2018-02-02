@@ -1,0 +1,59 @@
+VERSION: 1.0.0.1
+DATABASE: DQ_db
+USER: XXX
+HOST: 10.
+PORT: 5432
+GPLOAD:
+   INPUT:
+    - SOURCE:
+         PORT: 8082
+         FILE:
+           - /home/wherescape/ssm/data/*.csv
+    - COLUMNS:
+           - airline_iata: text
+           - airline_icao: text
+           - flightnumber: text
+           - codeshare: text
+           - operating_flightnumber: text
+           - date: text
+           - std: text
+           - off_block: text
+           - out: text
+           - down: text
+           - on_block: text
+           - sta: text
+           - eta: text
+           - ata: text
+           - origin_iata: text
+           - origin_icao: text
+           - destination_iata: text
+           - destination_icao: text
+           - airport_iata: text
+           - airport_icao: text
+           - last_next_iata: text
+           - last_next_icao: text
+           - orig_dest_iata: text
+           - orig_dest_icao: text
+           - aircraft_iata: text
+           - aircraft_icao: text
+           - seats: text
+           - pax: text
+           - lastupdated: text
+           - flight_type: text
+           - pax_flight: text
+           - origin_status: text
+           - destination_status: text
+           - etd: text
+           - atd: text
+           - hash: text
+    - FORMAT: csv
+    - DELIMITER: ','
+    - QUOTE: '"'
+    - HEADER: true
+    - ERROR_LIMIT: 6
+    - ERROR_TABLE: dv_load.load_aviation_schedule_status_err
+   OUTPUT:
+    - TABLE: stage.load_aviation_schedule_status
+    - MODE: INSERT
+   PRELOAD:
+    - TRUNCATE: true 
