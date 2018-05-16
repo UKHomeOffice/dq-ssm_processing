@@ -53,7 +53,7 @@ GPLOAD:
     - ERROR_LIMIT: 6
     - ERROR_TABLE: dv_load.load_aviation_schedule_status_err
    OUTPUT:
-    - TABLE: stage.load_aviation_schedule_status
+    - TABLE: stage.load_aviation_schedule_status_1
     - MODE: INSERT
    PRELOAD:
-    - TRUNCATE: true 
+    - TRUNCATE: true
